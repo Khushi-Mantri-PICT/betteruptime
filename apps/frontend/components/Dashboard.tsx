@@ -18,6 +18,7 @@ export function Dashboard() {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<'all' | 'up' | 'down' | 'checking'>('all');
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   const stats: DashboardStats = {
     totalSites: websites.length,
@@ -73,10 +74,10 @@ export function Dashboard() {
     }, []);
 
     const handleRefresh = async () => {
-    //setIsRefreshing(true);
+    setIsRefreshing(true);
     // Simulate refresh
     await fetchData();
-    //setIsRefreshing(false);
+    setIsRefreshing(false);
     };
 
   return (
